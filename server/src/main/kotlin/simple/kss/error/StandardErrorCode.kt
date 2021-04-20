@@ -2,7 +2,7 @@ package simple.kss.error
 
 enum class StandardErrorCode(
     private val httpCodeId: Int,
-    val namespace: Namespace,
+    private val namespace: Namespace,
     val code: Int,
     private val messageCodeId: String
 ) : ErrorCode {

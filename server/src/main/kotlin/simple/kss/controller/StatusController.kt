@@ -19,7 +19,6 @@ import javax.ws.rs.Produces
 @Path("/api/status")
 @RestController
 class StatusController {
-
     @CrossOrigin(methods = [RequestMethod.GET])
     @ApiOperation(value = "Статус сервиса", produces = "application/json", consumes = "application/json")
     @ApiResponses(

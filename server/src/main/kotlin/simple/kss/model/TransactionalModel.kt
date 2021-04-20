@@ -11,7 +11,7 @@ import java.io.Serializable
 abstract class TransactionalModel : Serializable {
     @ApiModelProperty("Идентификатор запроса")
     @JsonProperty("request_id")
-    var requestId = MDC.get(REQUEST_ID)
+    var requestId: String? = MDC.get(REQUEST_ID)
 
     companion object {
         fun <T : TransactionalModel?> clearing(value: T): T {

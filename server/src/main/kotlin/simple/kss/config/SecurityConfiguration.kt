@@ -17,7 +17,7 @@ open class SecurityConfiguration : WebSecurityConfigurerAdapter() {
     private var authEnable = false
 
     @Value("\${auth.role:ADMIN}")
-    private var roleName: String? = null
+    private lateinit var roleName: String
 
     @Throws(Exception::class)
     override fun configure(http: HttpSecurity) {

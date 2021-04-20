@@ -53,7 +53,7 @@ open class SwaggerConfiguration @Autowired constructor(private val version: @Not
         swagger.contact = contactEmail
         swagger.description = productDescription
         swagger.title = productTitle
-        swagger.setSupportSwaggerUi(true)
+        swagger.isSupportSwaggerUi = true
         if (baseHost.isNotEmpty()) swagger.host = baseHost
         log.warn("http://{}{}api-docs?url={}swagger.json", baseHost, basePath, basePath)
         return swagger

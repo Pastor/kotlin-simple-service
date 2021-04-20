@@ -27,26 +27,24 @@ import javax.annotation.PostConstruct
 @EnableAspectJAutoProxy
 @PropertySource(value = ["classpath:version.properties"], encoding = "UTF-8")
 @ComponentScan("simple.kss.service", "simple.kss.controller")
-open class BackendConfiguration(mapper: ObjectMapper) : WebMvcConfigurer {
-    private val mapper: ObjectMapper
-
+open class BackendConfiguration(private val mapper: ObjectMapper) : WebMvcConfigurer {
     @Value("\${build_branch:unknown}")
-    private var buildBranch: String = "unknown"
+    private lateinit var buildBranch: String
 
     @Value("\${build_commit:unknown}")
-    private var buildCommit: String = "unknown"
+    private lateinit var buildCommit: String
 
     @Value("\${build_timestamp:unknown}")
-    private var buildTimestamp: String = "0"
+    private lateinit var buildTimestamp: String
 
     @Value("\${project.version:unknown}")
-    private var projectVersion: String = "unknown"
+    private lateinit var projectVersion: String
 
     @Value("\${api.version.actual:unknown}")
-    private var apiVersionActual: String = "unknown"
+    private lateinit var apiVersionActual: String
 
     @Value("\${api.version.deprecated:unknown}")
-    private var apiVersionDeprecated: String = "unknown"
+    private lateinit var apiVersionDeprecated: String
 
     @Bean
     open fun createVersion(): VersionModel {
@@ -108,7 +106,4 @@ open class BackendConfiguration(mapper: ObjectMapper) : WebMvcConfigurer {
             .excludePathPatterns("/api/status", "/api/version")
     }
 
-    init {
-        this.mapper = mapper
-    }
 }
