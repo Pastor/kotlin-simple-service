@@ -1,0 +1,14 @@
+server:
+  port: 8070
+
+spring:
+  application:
+    name: kotlin-simple-service
+  profiles:
+    active: default
+  main:
+    allow-bean-definition-overriding: true
+cxf:
+  path: /
+  jaxrs:
+    component-scan: true
