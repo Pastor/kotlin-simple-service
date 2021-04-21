@@ -10,7 +10,7 @@ abstract class BaseMessageException protected constructor(
     private vararg val args: Serializable
 ) : RuntimeException(cause), Serializable {
 
-    protected constructor(errorCode: ErrorCode, vararg args: Serializable) : this(errorCode, null, *args) {}
+    protected constructor(errorCode: ErrorCode, vararg args: Serializable) : this(errorCode, null, *args)
 
     private fun toMessage(messageService: MessageService): String {
         return messageService.getMessage(errorCode.messageCode(), *args)

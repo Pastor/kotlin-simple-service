@@ -10,7 +10,7 @@ import io.swagger.annotations.ApiModelProperty
 data class VersionModel(
     @field:ApiModelProperty("Ветка сборки") @field:JsonProperty("branch")
     val buildBranch: String,
-    @field: ApiModelProperty("Коммит сборки") @field:JsonProperty("commit")
+    @field:ApiModelProperty("Коммит сборки") @field:JsonProperty("commit")
     val buildCommit: String,
     @field:ApiModelProperty("Время сборки") @field:JsonProperty("timestamp")
     val buildTimestamp: String,

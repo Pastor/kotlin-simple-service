@@ -1,9 +1,10 @@
 package simple.kss.provider
 
 import org.springframework.beans.factory.annotation.Autowired
-import simple.kss.interceptor.LoggingInterceptor
 import simple.kss.logger
+import simple.kss.service.RequestLoggingService
 import java.io.IOException
+import java.util.*
 import java.util.regex.Pattern
 import javax.ws.rs.container.ContainerRequestContext
 import javax.ws.rs.container.ContainerRequestFilter
@@ -12,7 +13,8 @@ import javax.ws.rs.container.ContainerResponseFilter
 import javax.ws.rs.ext.Provider
 
 @Provider
-class LoggingProvider @Autowired constructor(private val interceptor: LoggingInterceptor) : ContainerRequestFilter,
+class LoggingProvider @Autowired constructor(private val serviceRequest: RequestLoggingService) :
+    ContainerRequestFilter,
     ContainerResponseFilter {
 
     @Throws(IOException::class)
@@ -26,7 +28,7 @@ class LoggingProvider @Autowired constructor(private val interceptor: LoggingInt
         if (list != null && list.isNotEmpty()) {
             requestId = list[0]
         }
-        interceptor.register(requestId)
+        serviceRequest.register(Optional.ofNullable(requestId))
         log.info("START   : {} {}", requestContext.method, requestContext.uriInfo.requestUri)
     }
 
@@ -37,7 +39,7 @@ class LoggingProvider @Autowired constructor(private val interceptor: LoggingInt
             return
         }
         log.info("COMPLETE: {} {}", requestContext.method, requestContext.uriInfo.requestUri)
-        interceptor.unregister()
+        serviceRequest.unregister()
     }
 
     companion object {

@@ -11,5 +11,4 @@ data class ErrorModel(
     @field:JsonProperty("code") @field:ApiModelProperty("Код ошибки") var code: String,
     @field:JsonProperty("message") @field:ApiModelProperty("Сообщение об ошибке") var message: String,
     @field:ApiModelProperty("Возможные причины ошибки") @field:JsonProperty("reasons") var reasons: List<String>
-) : TransactionalModel() {
-}
+) : TransactionalModel()

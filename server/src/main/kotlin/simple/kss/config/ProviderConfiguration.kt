@@ -8,7 +8,7 @@ import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 import org.springframework.context.annotation.Primary
 import simple.kss.MessageService
-import simple.kss.interceptor.LoggingInterceptor
+import simple.kss.service.RequestLoggingService
 import simple.kss.provider.*
 import simple.kss.provider.BaseExceptionProvider
 import javax.ws.rs.ext.ParamConverterProvider
@@ -16,7 +16,7 @@ import javax.ws.rs.ext.Provider
 
 @Provider
 @Configuration
-open class ProviderConfiguration @Autowired constructor(private val interceptor: LoggingInterceptor) {
+open class ProviderConfiguration @Autowired constructor(private val serviceRequest: RequestLoggingService) {
 
     @Bean
     open fun jsonProvider(mapper: ObjectMapper): JacksonJsonProvider {
@@ -44,7 +44,7 @@ open class ProviderConfiguration @Autowired constructor(private val interceptor:
     @Bean
     @Primary
     open fun loggingProvider(): LoggingProvider {
-        return LoggingProvider(interceptor)
+        return LoggingProvider(serviceRequest)
     }
 
     @Bean

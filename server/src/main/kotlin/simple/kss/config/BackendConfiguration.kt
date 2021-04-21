@@ -12,10 +12,9 @@ import org.springframework.context.annotation.*
 import org.springframework.context.support.ResourceBundleMessageSource
 import org.springframework.web.filter.CommonsRequestLoggingFilter
 import org.springframework.web.servlet.config.annotation.EnableWebMvc
-import org.springframework.web.servlet.config.annotation.InterceptorRegistry
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer
-import simple.kss.interceptor.LoggingInterceptor
 import simple.kss.model.VersionModel
+import simple.kss.service.RequestLoggingService
 import java.time.Instant
 import java.time.LocalDateTime
 import java.time.ZoneId
@@ -96,14 +95,7 @@ open class BackendConfiguration(private val mapper: ObjectMapper) : WebMvcConfig
     }
 
     @Bean
-    open fun loggingInterceptor(): LoggingInterceptor {
-        return LoggingInterceptor()
+    open fun loggingService(): RequestLoggingService {
+        return RequestLoggingService()
     }
-
-    override fun addInterceptors(registry: InterceptorRegistry) {
-        registry.addInterceptor(loggingInterceptor())
-            .addPathPatterns("/api/v1/**")
-            .excludePathPatterns("/api/status", "/api/version")
-    }
-
 }

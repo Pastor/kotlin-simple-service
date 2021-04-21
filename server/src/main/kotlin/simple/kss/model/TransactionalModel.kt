@@ -14,8 +14,8 @@ abstract class TransactionalModel : Serializable {
     var requestId: String? = MDC.get(REQUEST_ID)
 
     companion object {
-        fun <T : TransactionalModel?> clearing(value: T): T {
-            value?.requestId = null
+        fun <T : TransactionalModel> clearing(value: T): T {
+            value.requestId = null
             return value
         }
     }

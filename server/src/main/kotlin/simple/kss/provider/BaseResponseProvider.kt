@@ -6,7 +6,7 @@ import javax.ws.rs.core.HttpHeaders
 import javax.ws.rs.core.Response
 
 abstract class BaseResponseProvider {
-    @field:Context
+    @Context
     private var headers: HttpHeaders? = null
 
     protected fun processResponse(builder: Response.ResponseBuilder) {

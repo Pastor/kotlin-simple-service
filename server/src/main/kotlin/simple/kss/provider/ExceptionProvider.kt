@@ -29,6 +29,7 @@ class ExceptionProvider constructor(private val messageService: MessageService) 
             listOf()
         )
         var status = Response.Status.INTERNAL_SERVER_ERROR.statusCode
+        //NOTICE: Обработка конкретных ошибок
         val builder = Response.status(status).entity(entity)
         processResponse(builder)
         return builder.build()
