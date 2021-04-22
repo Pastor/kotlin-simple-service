@@ -6,25 +6,29 @@ enum class StandardErrorCode(
     val code: Int,
     private val messageCodeId: String
 ) : ErrorCode {
-    UNKNOWN(500, Namespace.COMMON, 0, "Common.Error.Unknown"), PARAMETER_NOT_FOUND(
+    UNKNOWN(500, Namespace.COMMON, 0, "Common.Error.Unknown"),
+    PARAMETER_NOT_FOUND(
         400,
         Namespace.COMMON,
         1,
         "Common.Error.Parameter"
     ),
-    NOT_GET_RESOURCE(406, Namespace.COMMON, 2, "Common.Error.NotGetResource"), UNSUPPORTED_OPERATION(
+    NOT_GET_RESOURCE(406, Namespace.COMMON, 2, "Common.Error.NotGetResource"),
+    UNSUPPORTED_OPERATION(
         406,
         Namespace.COMMON,
         3,
         "Common.Error.UnsupportedOperation"
     ),
-    NOT_AUTHENTICATED(401, Namespace.SECURITY, 1, "Security.Error.NotAuthenticated"), PERMISSION_DENIED(
+    NOT_AUTHENTICATED(401, Namespace.SECURITY, 1, "Security.Error.NotAuthenticated"),
+    PERMISSION_DENIED(
         403,
         Namespace.SECURITY,
         2,
         "Security.Error.PermissionDenied"
     ),
-    PERMISSION_DENIED_SCOPE(403, Namespace.SECURITY, 3, "Security.Error.PermissionDeniedScope"), ENTITY_NOT_FOUND(
+    PERMISSION_DENIED_SCOPE(403, Namespace.SECURITY, 3, "Security.Error.PermissionDeniedScope"),
+    ENTITY_NOT_FOUND(
         404,
         Namespace.BUSINESS,
         1,
@@ -36,13 +40,15 @@ enum class StandardErrorCode(
         2,
         "Business.Error.ParameterIllegalFormat"
     ),
-    OBJECT_TRANSFORM_FAULT(500, Namespace.BUSINESS, 3, "Business.Error.ObjectTransformFault"), DATABASE_REQUEST_FAULT(
+    OBJECT_TRANSFORM_FAULT(500, Namespace.BUSINESS, 3, "Business.Error.ObjectTransformFault"),
+    DATABASE_REQUEST_FAULT(
         500,
         Namespace.BUSINESS,
         4,
         "Business.Error.DatabaseRequestFault"
     ),
-    DATABASE_SYNTAX_FAULT(500, Namespace.BUSINESS, 5, "Business.Error.DatabaseSyntaxFault"), SCHEMA_GENERATE_FAULT(
+    DATABASE_SYNTAX_FAULT(500, Namespace.BUSINESS, 5, "Business.Error.DatabaseSyntaxFault"),
+    SCHEMA_GENERATE_FAULT(
         500,
         Namespace.BUSINESS,
         6,
