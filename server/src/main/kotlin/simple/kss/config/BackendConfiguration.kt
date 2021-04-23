@@ -83,7 +83,7 @@ open class BackendConfiguration(private val mapper: ObjectMapper) : WebMvcConfig
 
     @PostConstruct
     @Autowired
-    private fun completeMapper() {
+    fun completeMapper() {
         mapper.configure(JsonParser.Feature.IGNORE_UNDEFINED, true)
         mapper.configure(JsonGenerator.Feature.IGNORE_UNKNOWN, true)
         mapper.configure(SerializationFeature.INDENT_OUTPUT, true)
